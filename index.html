@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清华大学情感智能课题组 · 本科生实习招募</title>
+<style>
+  :root {
+    --primary: #5b21b6;
+    --primary-light: #8b5cf6;
+    --accent: #ec4899;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .hero {
+    background: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 50%, #ec4899 100%);
+    color: #fff;
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+  }
+  .hero-content {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+  }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    font-size: 18px;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .container {
+    max-width: 900px;
+    margin: -60px auto 60px;
+    padding: 0 24px;
+    position: relative;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  }
+  .card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f3f4f6;
+  }
+  .card h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  .card p {
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .card ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .card ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 12px;
+    width: 8px; height: 8px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 50%;
+  }
+  .direction-item {
+    background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%);
+    border-left: 3px solid var(--primary-light);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  .direction-item strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .highlight {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    gap: 12px;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+  .divider span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    padding: 4px 14px;
+    background: #faf5ff;
+    border-radius: 999px;
+    border: 1px solid #ede9fe;
+  }
+  .alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .alumni-item {
+    background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%);
+    border-left: 3px solid var(--primary-light);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .alumni-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.15);
+  }
+  .alumni-item .arrow {
+    color: var(--primary);
+    font-weight: 700;
+    margin: 0 4px;
+  }
+  .alumni-item .dest {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .alumni-note {
+    color: var(--text-light);
+    font-size: 13px;
+    margin-top: 14px;
+    text-align: right;
+  }
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--text-light);
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+    background: #fff;
+  }
+  .footer p { margin-bottom: 6px; }
+  @media (max-width: 640px) {
+    .hero { padding: 60px 20px 80px; }
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 15px; }
+    .card { padding: 24px 22px; }
+    .card h2 { font-size: 19px; }
+    .container { margin-top: -40px; padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <span class="badge">📢 本科生实习招募 · 长期有效</span>
+    <h1>清华大学情感智能课题组</h1>
+    <p>探索多模态大模型时代的情感智能 —— 让 AI 真正读懂人、回应人</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2><span class="icon">🏛</span>研究组介绍</h2>
+    <p>我们是清华大学情感智能课题组，由<span class="highlight">国家级青年人才</span><span class="highlight">赵思成副教授</span>领导。赵老师现任<span class="highlight">中国图象图形学学会情感计算与理解专委会秘书长</span>，长期聚焦情感计算、可控内容生成、多模态大语言模型等方向，已在 IEEE/ACM 汇刊及 CCF-A 类会议上发表高水平论文 <span class="highlight">100 余篇</span>，并与多家企业建立了产学研合作。课题组联合指导的多名学生被<span class="highlight">斯坦福大学</span>、<span class="highlight">哥伦比亚大学</span>等海外顶尖高校录取，整体氛围开放、资源充足，鼓励本科生独立提出想法、主导课题并产出高水平成果。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="icon">🔬</span>研究方向简介</h2>
+    <p>让 AI 更好地服务人类，是人工智能发展的核心命题之一。在这一过程中，准确理解人的情绪状态、并以恰当的方式表达情感，对于提升 AI 服务的自然度、可信度与长期价值至关重要。我们结合多模态大模型，研究如何在其基础上推进 AI 系统的情感智能，研究方向包括但不限于：</p>
+    <div class="direction-item">
+      <strong>多模态情感感知与理解</strong>
+      从多模态信号（文本 / 视觉 / 音频为主）中识别、推理人的情绪与心理状态。
+    </div>
+    <div class="direction-item">
+      <strong>情感内容生成与表达</strong>
+      让模型在多模态输出中生成具备共情力、得体且可控的情感内容。
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="icon">🎓</span>招收对象</h2>
+    <ul>
+      <li>主要招收有志于在国内外高校深造、且进行人工智能相关方向研究的学生（<span class="highlight">本科专业不限</span>）。</li>
+      <li>需要前往清华大学<span class="highlight">线下实习时间不少于 3 个月</span>（协助安排住宿），整体时间不少于 6 个月，后续可视具体情况线上实习。</li>
+    </ul>
+    <div class="divider"><span>要求</span></div>
+    <ul>
+      <li>熟悉 PyTorch 等主流深度学习框架、熟悉使用大模型作为工具进行编程。</li>
+      <li>具有深度学习动手实践经验（加分项：在人工智能会议或期刊有发表 / 投稿经历，或有人工智能竞赛获奖 / 参与经历）。</li>
+      <li>了解领域内代表性工作，能够及时跟进前沿工作。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="icon">📝</span>实习内容</h2>
+    <ul>
+      <li><strong>学习方式：</strong>阅读前沿学术论文、定期约谈与想法讨论、参与组会分享与课题汇报。</li>
+      <li><strong>产出目标：</strong>深度参与至少 1 个完整研究课题，撰写论文并向国际会议 / 期刊投稿，争取录用。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="icon">💡</span>我们能提供</h2>
+    <ul>
+      <li>明确的科研课题与科研思路 / 论文写作指导。</li>
+      <li>2-4 张 A100 级别显卡。</li>
+      <li>与头部企业的产学研合作机会。</li>
+      <li>为申请国内外院校提供推荐信等长期支持。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="icon">📮</span>投递方式</h2>
+    <p>请将简历发送至：邮箱 <span class="highlight">wudaiqing04@gmail.com</span>，抄送 <span class="highlight">schzhao@tsinghua.edu.cn</span>。</p>
+    <p>邮件主题：<span class="highlight">本科实习-姓名-学校-年级</span>。</p>
+    <p>合适的话我们会及时联系，并进行进一步沟通。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="icon">🌏</span>部分已指导实习生</h2>
+    <div class="alumni-grid">
+      <div class="alumni-item">肖同学 · 南开大学 <span class="arrow">→</span> <span class="dest">约翰霍普金斯大学</span> 研究生</div>
+      <div class="alumni-item">陈同学 · 南开大学 <span class="arrow">→</span> <span class="dest">卡内基梅隆大学</span> 研究生</div>
+      <div class="alumni-item">王同学 · 浙江大学 <span class="arrow">→</span> <span class="dest">新加坡国立大学</span> 研究生</div>
+      <div class="alumni-item">周同学 · 加州大学伯克利分校 <span class="arrow">→</span> <span class="dest">斯坦福大学</span> 研究生</div>
+      <div class="alumni-item">林同学 · 哈尔滨工业大学 <span class="arrow">→</span> <span class="dest">莫纳什大学</span> 博士生</div>
+      <div class="alumni-item">李同学 · 哈尔滨工业大学 <span class="arrow">→</span> <span class="dest">南洋理工大学</span> 博士生</div>
+      <div class="alumni-item">王同学 · 哈尔滨工业大学 <span class="arrow">→</span> <span class="dest">哥伦比亚大学</span> 研究生</div>
+      <div class="alumni-item">马同学 · 哈尔滨工业大学（威海） <span class="arrow">→</span> <span class="dest">普渡大学</span> 博士生</div>
+      <div class="alumni-item">黄同学 · 哈尔滨工业大学（威海） <span class="arrow">→</span> <span class="dest">南加州大学</span> 博士生</div>
+    </div>
+    <p class="alumni-note">（部分已指导实习生，未列举完整）</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>清华大学情感智能课题组 · Affective Intelligence Group @ Tsinghua University</p>
+  <p>期待与你相遇 🌟</p>
+</footer>
+
+</body>
+</html>
